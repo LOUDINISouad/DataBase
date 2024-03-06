@@ -1,0 +1,39 @@
+import sqlite3
+
+# Connect to the SQLite database
+conn = sqlite3.connect('ldn_database.db')
+cursor = conn.cursor()
+
+# Create authors table
+cursor.execute("""CREATE TABLE IF NOT EXISTS authors (
+author_id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+country TEXT);""")
+
+# Create books table
+cursor.execute("""CREATE TABLE IF NOT EXISTS books (
+book_id INTEGER PRIMARY KEY,
+title TEXT NOT NULL,
+author_id INTEGER,
+year_published INTEGER,
+price DECIMAL(10, 2),
+FOREIGN KEY (author_id) REFERENCES authors(author_id)
+);""")
+
+# Create customers table
+cursor.execute("""CREATE TABLE IF NOT EXISTS customers (
+customer_id INTEGER PRIMARY KEY,
+first_name TEXT NOT NULL,
+last_name TEXT NOT NULL,
+email TEXT,
+city TEXT
+);""")
+
+# Commit the transaction
+conn.commit()
+
+# Close the cursor
+cursor.close()
+
+# Close the connection to the database
+conn.close()
