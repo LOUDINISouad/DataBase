@@ -19,6 +19,17 @@ year_published INTEGER,
 price DECIMAL(10, 2),
 FOREIGN KEY (author_id) REFERENCES authors(author_id)
 );""")
+#Add indexing to book title
+#cursor.execute("CREATE INDEX IF NOT EXISTS name ON books (title);")
+
+res = cursor.execute("""SELECT
+   *
+FROM
+   sqlite_master
+WHERE
+   type= 'index' and tbl_name = 'books' and name = 'name';""")
+print(res.fetchone())
+
 
 # Create customers table
 cursor.execute("""CREATE TABLE IF NOT EXISTS customers (
@@ -29,11 +40,7 @@ email TEXT,
 city TEXT
 );""")
 
-# Commit the transaction
+
 conn.commit()
-
-# Close the cursor
 cursor.close()
-
-# Close the connection to the database
 conn.close()
