@@ -1,7 +1,7 @@
 Are you ready to become an SQL master? Let's dive in!
 ## 🎓Part 1: Basic SQL Practice 🚀
 
-In this part, we'll start with some basic SQL practice to solidify your foundation. Check out the [README.md](https://github.com/LOUDINISouad/DataBase/blob/main/Part_one/README.md)) file for more details.
+In this part, we'll start with some basic SQL practice to solidify your foundation. Check out the [README.md](https://github.com/LOUDINISouad/DataBase/blob/main/Part_one/README.md) file for more details.
 
 ## 🎓Part 2: Mastering Advanced SQL Techniques 🚀
 
