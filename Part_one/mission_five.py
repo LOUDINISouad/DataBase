@@ -53,10 +53,11 @@ results = cursor.execute(query)
 print("Books Sold Above Average Sales:")
 for row in results.fetchall():
     print(row)
-
+    
 query = """
-    SELECT customer_name, MAX(order_date) AS last_order_date
-    FROM orders
+    SELECT customer_name, 
+           (SELECT MAX(order_date) FROM orders AS o2 WHERE o1.customer_name = o2.customer_name) AS last_order_date
+    FROM orders AS o1
     GROUP BY customer_name;
 """
 
