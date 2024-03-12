@@ -26,7 +26,17 @@ results = cursor.execute(query)
 for row in results.fetchall():
     print(row)
 
-
+# Challenge Two: Customer with Most Orders 
+second_query = f"""SELECT TOP 1 customer_name
+            FROM Orders
+            GROUP BY customer_name
+            ORDER BY COUNT(order_number) DESC;
+            LIMIT 1;
+        """
+res = cursor.execute(second_query)
+for row in res.fetchall():
+    print("\nCustomer with Most Orders:")
+    print(row[2])
 conn.commit()
 cursor.close()
 conn.close()
